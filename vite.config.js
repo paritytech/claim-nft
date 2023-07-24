@@ -14,7 +14,7 @@ export default defineConfig(() => {
       },
     },
     // sets base url to the repo name, enabling github pages deployment to work.
-    base: '/dotdrop/',
+    base: '/claim-nft/',
     plugins: [react()],
   };
 });
