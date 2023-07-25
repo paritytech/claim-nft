@@ -15,7 +15,7 @@ export default function Landing () {
               <Card.Body className="d-flex flex-column">
                 <CardHeader
                   title={'Polkadot NFTs'}
-                  cardText={['We are excited to announce that Polkadot NFTs are going to be available soon with the launch of Uniques pallet on Statemint parachain! Please come back with your NFT gift secret after the next Statemint parachain release to claim your NFT!']}
+                  cardText={['We are excited to announce that Polkadot NFTs are going to be available soon with the launch of NFTs pallet on Statemint parachain! Please come back with your NFT gift secret after the next Statemint parachain release to claim your NFT!']}
                 />
               </Card.Body>
             </div>

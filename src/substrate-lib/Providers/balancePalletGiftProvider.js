@@ -51,7 +51,7 @@ const balancePalletGiftProvider = {
     return transferAll(api, interimAccount, senderAddress, 'gift::remove');
   },
   queryGift: async (api, giftAccount) => {
-    const giftAssets = { uniques: [], balances: [], assets: [] };
+    const giftAssets = { nfts: [], balances: [], assets: [] };
     const giftAddress = utils.getAccountAddress(giftAccount);
 
     // query balances

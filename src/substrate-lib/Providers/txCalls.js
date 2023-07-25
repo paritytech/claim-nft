@@ -46,19 +46,19 @@ export const transferAllAssets = async (
 ) => {
   const fromAddress = utils.getAccountAddress(fromAccount);
 
-  // Create Txs for uniques NFTs
-  // 1- get the list of all uniques instanceIds owned by this source Account
-  const uniquesTxs = [];
-  const assetKeys = await api.query.uniques.account.keys(fromAddress);
+  // Create Txs for NFTs
+  // 1- get the list of all nfts owned by this source Account
+  const nftsTxs = [];
+  const assetKeys = await api.query.nfts.account.keys(fromAddress);
   assetKeys.forEach(({ args: [_, classId, instanceId] }) => {
-    const tx = api.tx.uniques.transfer(classId, instanceId, toAddress);
-    uniquesTxs.push(tx);
+    const tx = api.tx.nfts.transfer(classId, instanceId, toAddress);
+    nftsTxs.push(tx);
   });
 
   // create Tx for balance transferAll to reap account and tranfer all balance.
   const balanceTxs = [api.tx.balances.transferAll(toAddress, false)];
   const remarkTxs = [api.tx.system.remarkWithEvent(remark)];
-  const txs = [...uniquesTxs, ...balanceTxs, ...remarkTxs];
+  const txs = [...nftsTxs, ...balanceTxs, ...remarkTxs];
   const batchTx = api.tx.utility.batchAll(txs);
 
   return signAndSendTx(api, batchTx, fromAccount);

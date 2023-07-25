@@ -5,7 +5,7 @@ import config from '../../config';
 import { transferBalanceAndFees, transferAllAssets } from './txCalls';
 const feeMultiplierValue = config.ADDED_FEE_MULTIPLIER;
 
-const uniquesPalletGiftProvider = {
+const nftsPalletGiftProvider = {
   createGift: async (api, interimAccount, senderAccount, gift) => {
     // currently create only supports balances
     const interimAddress = utils.getAccountAddress(interimAccount);
@@ -22,9 +22,9 @@ const uniquesPalletGiftProvider = {
     const recepientAddress = utils.getAccountAddress(recipientAccount);
 
     // NFT-Campaign only:  if there is no NFTs to claim throw an error
-    // verify the gift account holds any uniques assets.
+    // verify the gift account holds any nfts.
     const fromAddress = utils.getAccountAddress(interimAccount);
-    const assetKeys = await api.query.uniques?.account.keys(fromAddress);
+    const assetKeys = await api.query.nfts?.account.keys(fromAddress);
     if ((assetKeys?.length || 0) === 0) {
       throw new Error(
         'The entered gift secret does not hold any NFTs. You might have entered the wrong secret or the NFT might have been already claimed.'
@@ -50,7 +50,7 @@ const uniquesPalletGiftProvider = {
     );
   },
   queryGift: async (api, giftAccount) => {
-    const giftAssets = { uniques: [], balances: [], assets: [] };
+    const giftAssets = { nfts: [], balances: [], assets: [] };
     const giftAddress = utils.getAccountAddress(giftAccount);
 
     // query balances
@@ -58,10 +58,10 @@ const uniquesPalletGiftProvider = {
     const freeBalance = balance?.free.toHuman();
     freeBalance && giftAssets.balances.push(freeBalance);
 
-    // query uniques assets
-    const assetKeys = await api.query.uniques.account.keys(giftAddress);
+    // query nfts
+    const assetKeys = await api.query.nfts.account.keys(giftAddress);
     assetKeys.forEach(({ args: [_, classId, instanceId] }) => {
-      giftAssets.uniques.push({ classId, instanceId });
+      giftAssets.nfts.push({ classId, instanceId });
     });
     return giftAssets;
   },
@@ -74,4 +74,4 @@ const uniquesPalletGiftProvider = {
   },
 };
 
-export default uniquesPalletGiftProvider;
+export default nftsPalletGiftProvider;
