@@ -12,15 +12,17 @@ jobs:
       - name: Checkout polkadot-nft
         uses: actions/checkout@v3
         with:
-          ref: polkadot-nft
-
+          ref: kusama-nft
+      - name: Reset promotion branch
+        run: |
+          git fetch origin polkadot-nft:polkadot-nft
+          git reset --hard polkadot-nft
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
           title: 'Merge polkadot-nft to kusama-nft'
           body: 'This pull request merges the polkadot-nft branch to the kusama-nft branch.'
-          branch: kusama-nft
-          base: polkadot-nft
+          branch: kusama-nft-sync
 
       #- name: Close Old Pull Requests
       #  uses: actions/github-script@v3
