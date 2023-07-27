@@ -81,7 +81,7 @@ export default function ClaimMain() {
         claimGift(api, interimAccount, recipientAccount)
           .then((claimedGift) => {
             const { classId, instanceId, classMetadata, instanceMetadata } =
-              claimedGift?.uniques?.[0];
+              claimedGift?.nfts?.[0];
             console.log(claimedGift);
             if (classId == null || instanceId == null) {
               throw new Error('The gift secret does not hold any NFTs');
