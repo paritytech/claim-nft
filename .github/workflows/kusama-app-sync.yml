@@ -1,0 +1,42 @@
+name: Open Pull Request to merge changes to kusama-nft
+
+on:
+  push:
+    branches:
+      - polkadot-nft
+
+jobs:
+  open-pull-request:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout polkadot-nft
+        uses: actions/checkout@v2
+        with:
+          ref: polkadot-nft
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          title: 'Merge polkadot-nft to kusama-nft'
+          body: 'This pull request merges the polkadot-nft branch to the kusama-nft branch.'
+          branch: kusama-nft
+          base: polkadot-nft
+
+      - name: Close Old Pull Requests
+        uses: actions/github-script@v3
+        with:
+          script: |
+            const prs = await github.issues.listPullRequests({
+              owner: context.repo.owner,
+              repo: context.repo.name,
+              state: "open",
+              base: "polkadot-nft",
+              head: "kusama-nft"
+            });
+
+            for (const pr of prs) {
+              github.issues.update({
+                id: pr.id,
+                state: "closed"
+              });
+            }
