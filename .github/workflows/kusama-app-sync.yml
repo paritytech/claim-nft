@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout polkadot-nft
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           ref: polkadot-nft
 
@@ -22,21 +22,21 @@ jobs:
           branch: kusama-nft
           base: polkadot-nft
 
-      - name: Close Old Pull Requests
-        uses: actions/github-script@v3
-        with:
-          script: |
-            const prs = await github.rest.pulls.list({
-              owner: context.repo.owner,
-              repo: context.repo.name,
-              state: "open",
-              base: "polkadot-nft",
-              head: "kusama-nft"
-            });
-
-            for (const pr of prs) {
-              github.issues.update({
-                id: pr.id,
-                state: "closed"
-              });
-            }
+      #- name: Close Old Pull Requests
+      #  uses: actions/github-script@v3
+      #  with:
+      #    script: |
+      #      const prs = await github.rest.pulls.list({
+      #        owner: context.repo.owner,
+      #        repo: context.repo.name,
+      #        state: "open",
+      #        base: "polkadot-nft",
+      #        head: "kusama-nft"
+      #      });
+      #
+      #      for (const pr of prs) {
+      #        github.issues.update({
+      #          id: pr.id,
+      #          state: "closed"
+      #        });
+      #      }
