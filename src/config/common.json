@@ -1,7 +1,7 @@
 {
   "APP_NAME": "NFT Claim App",
   "RPC": {},
-  "THEME": "polkadotnft",
+  "THEME": "kusamanft",
   "MAX_AMOUNT": 100,
   "CLAIM_URL": "https://claimnft.polkadot.network/#/claim",
   "ALTERNATIVE_APP_URL": "https://claimnft.kusama.network",
