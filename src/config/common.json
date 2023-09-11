@@ -5,7 +5,7 @@
   "MAX_AMOUNT": 100,
   "CLAIM_URL": "https://claimnft.polkadot.network/#/claim",
   "ALTERNATIVE_APP_URL": "https://claimnft.polkadot.network",
-  "NFT_PREVIEW_URL": "https://singular.rmrk.app/collectibles/statemint/",
+  "NFT_PREVIEW_URL": "https://singular.rmrk.app/collectibles/statemine/",
   "ADDED_FEE_MULTIPLIER": 2,
   "CHAIN_SCANNER_URL": "https://statemint.subscan.io/",
   "RELAYCHAIN_GENESIS": "0xb0a8d493285c2df73290dfb7e61f870f17b41801197a149ca93654499ea3dafe"
