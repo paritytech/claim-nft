@@ -47,9 +47,8 @@ export const loadExtension = async (state, dispatch, chainInfo) => {
           (!chainInfo?.genesisHash ||
             !account.meta?.genesisHash ||
             account.meta?.genesisHash === chainInfo?.genesisHash?.toHex() ||
-            /* NFT campain only (load kusama addresses) */
-            account.meta?.genesisHash ===
-              '0xb0a8d493285c2df73290dfb7e61f870f17b41801197a149ca93654499ea3dafe')
+            /* load relay chain addresses */
+            account.meta?.genesisHash === config.RELAYCHAIN_GENESIS)
         );
       });
       console.log(newAccounts);
@@ -66,7 +65,7 @@ export const loadExtension = async (state, dispatch, chainInfo) => {
           injectedAcct.address,
           injectedAcct.meta,
           null,
-          injectedAcct.type
+          injectedAcct.type,
         );
         keyring.addPair(pair);
         // load the balance for the new pair
