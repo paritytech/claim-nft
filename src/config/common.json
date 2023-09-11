@@ -3,7 +3,7 @@
   "RPC": {},
   "THEME": "kusamanft",
   "MAX_AMOUNT": 100,
-  "CLAIM_URL": "https://claimnft.polkadot.network/#/claim",
+  "CLAIM_URL": "https://claimnft.kusama.network/#/claim",
   "ALTERNATIVE_APP_URL": "https://claimnft.polkadot.network",
   "NFT_PREVIEW_URL": "https://singular.rmrk.app/collectibles/statemine/",
   "ADDED_FEE_MULTIPLIER": 2,
