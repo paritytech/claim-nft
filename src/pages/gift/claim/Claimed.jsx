@@ -40,7 +40,7 @@ export default function Claimed({ accountAddress, nft }) {
             target="_blank"
             rel="noreferrer"
           >
-            See your NFT on Singular
+            See your NFT on Kodadot
           </a>
         </Col>
       </Card.Body>
